@@ -13,9 +13,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./my-first-website
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -24,15 +21,15 @@ jobs:
         with:
           node-version: 20
       - name: Install dependencies
-        run: npm ci
+        run: cd my-first-website && npm ci
       - name: Build
-        run: npm run build
+        run: cd my-first-website && npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          path: 'my-first-website/dist'
   deploy:
     environment:
       name: github-pages
