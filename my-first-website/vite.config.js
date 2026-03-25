@@ -5,6 +5,7 @@ import { resolve, dirname } from 'path'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
+  base: '/Code/',
   build: {
     rollupOptions: {
       input: {
